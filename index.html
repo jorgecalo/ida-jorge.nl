@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ida & Jorge - Our Wedding</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>Ida & Jorge</h1>
+        <p>Are getting married!</p>
+    </header>
+
+    <div class="container">
+
+        <section class="section engagement">
+            <h2>He Proposed!</h2>
+            <p>We're thrilled to announce our engagement!</p>
+            <p><strong>August 28, 2025 &middot; Rome, Italy in Villa Borghese</strong></p> 
+            <div id="countdown" class="countdown">
+                <div class="countdown-item">
+                    <span id="days">0</span>
+                    <p>Days</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">0</span>
+                    <p>Hours</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">0</span>
+                    <p>Minutes</p>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">0</span>
+                    <p>Seconds</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section story">
+            <h2>Our Story</h2>
+            <p>
+                How it all started ... 
+            </p>
+        </section>
+        
+        <section class="section wedding-details">
+            <h2>The Wedding</h2>
+            <p>Save the date! More details to come soon.</p>
+            <p><strong>[Wedding Date] &middot; [Wedding Location]</strong></p>
+        </section>
+
+        <section class="section">
+            <h2>Gallery</h2>
+            <div class="gallery">
+                </div>
+        </section>
+
+    </div>
+
+    <footer class="footer">
+        <p>Made with love by Ida & Jorge</p>
+    </footer>
+
+    <script>
+        // Set the date we're counting down to
+        const countDownDate = new Date("Aug 28, 2025 00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the elements with id
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+
+            // If the countdown is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "<h2>The day is here!</h2>";
+            }
+        }, 1000);
+    </script>
+    
+    <div id="galleryModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption" class="modal-caption"></div>
+    </div>
+
+    <script src="gallery.js"></script>
+
+</body>
+</html>
