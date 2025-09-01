@@ -80,6 +80,7 @@ resource "google_dns_record_set" "a_record" {
   rrdatas = [google_compute_global_address.static_ip.address]
 }
 
+
 # 6. Create a Google-managed SSL certificate for the custom domain
 resource "google_compute_managed_ssl_certificate" "ssl_cert" {
   name = "website-ssl-cert"
@@ -127,8 +128,8 @@ resource "google_compute_global_forwarding_rule" "https_forwarding_rule" {
 
 # Find all image files in the local 'photos' directory
 locals {
-  # This creates a list of all files ending with common image extensions.
-  photo_files = fileset("${path.module}/photos", "**/*.{jpg,jpeg,png,gif,webp}")
+  # This creates a list of all files ending with common image extensions (both cases).
+  photo_files = fileset("${path.module}/photos", "**/*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF,webp,WEBP}")
 }
 
 # Upload the main static files (HTML, CSS, JS)
@@ -137,7 +138,7 @@ resource "google_storage_bucket_object" "static_files" {
   for_each = {
     "index.html" = "text/html"
     "style.css"  = "text/css"
-   "gallery.js" = "application/javascript"
+    "gallery.js" = "application/javascript"
   }
 
   name          = each.key
