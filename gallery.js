@@ -2,33 +2,30 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // --- YOUR PHOTO ALBUM ---
-    // This is your list of 5 photos.
-    // Make sure your image files are inside a folder named "photos".
     const photos = [
         {
             src: 'photos/SMR03706.JPG',
-            caption: 'Our favorite memory!' // You can change this caption
+            caption: 'The proposal!' // You can change this caption
         },
         {
             src: 'photos/SMR03865.JPG', // <-- CHANGE THIS FILENAME
-            caption: 'Add your caption here.'
+            caption: 'The proposal!'
         },
         {
             src: 'photos/SMR03648.JPG', // <-- CHANGE THIS FILENAME
-            caption: 'Add your caption here.'
+            caption: 'The proposal!'
         },
         {
             src: 'photos/SMR03886.JPG', // <-- CHANGE THIS FILENAME
-            caption: 'Add your caption here.'
+            caption: 'The proposal!'
         },
         {
             src: 'photos/SMR04191.JPG', // <-- CHANGE THIS FILENAME
-            caption: 'Add your caption here.'
+            caption: 'Colosseum'
         }
     ];
 
     // The code below creates the gallery and makes the photos pop up when clicked.
-    // You don't need to change anything below this line.
     const gallery = document.querySelector('.gallery');
     const modal = document.getElementById('galleryModal');
     const modalImg = document.getElementById('modalImage');
