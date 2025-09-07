@@ -17,14 +17,44 @@ body {
 
 /* --- Header --- */
 .header {
+    position: relative;
     text-align: center;
     padding: 60px 20px;
-    background-image: url('https://source.unsplash.com/1600x900/?wedding,flowers,soft');
-    background-size: cover;
-    background-position: center;
     color: white;
     border-radius: 0 0 15px 15px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+
+.header-background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 45% 55%;
+    z-index: 1;
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+.header-content {
+    position: relative;
+    z-index: 3;
 }
 
 .header h1 {
@@ -64,33 +94,48 @@ body {
     line-height: 1.8;
 }
 
-/* --- NEW Center Stage Gallery Layout --- */
+/* --- Custom Spacing Adjustments --- */
+.gallery-section {
+  padding-top: 10px;
+}
+
+/* --- Horizontal Scrolling Gallery --- */
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Creates 4 equal columns */
-    grid-template-rows: repeat(2, 180px); /* Creates 2 rows with a fixed height */
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
     gap: 15px;
     margin-top: 30px;
+    padding: 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #8B4513 #fdfaf6;
+}
+
+.gallery::-webkit-scrollbar {
+  height: 8px;
+}
+.gallery::-webkit-scrollbar-track {
+  background: #fdfaf6;
+}
+.gallery::-webkit-scrollbar-thumb {
+  background-color: #8B4513;
+  border-radius: 10px;
 }
 
 .gallery img {
-    width: 100%;
-    height: 100%;
+    width: 396px; /* UPDATED: Increased by 20% */
+    height: 286px; /* UPDATED: Increased by 20% */
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
 .gallery img:hover {
     transform: scale(1.05);
-}
-
-/* This targets your FIRST photo in gallery.js and makes it the centerpiece */
-.gallery img:first-child {
-    grid-column: 2 / span 2; /* Starts at column line 2 and spans 2 columns */
-    grid-row: 1 / span 2;    /* Starts at row line 1 and spans 2 rows */
 }
 
 
@@ -112,8 +157,9 @@ body {
     margin: auto;
     display: block;
     width: auto;
-    max-width: 85%;
-    max-height: 80vh;
+    height: auto;
+    max-width: 95%;
+    max-height: 90vh;
     animation-name: zoom;
     animation-duration: 0.5s;
 }
@@ -151,10 +197,73 @@ body {
     cursor: pointer;
 }
 
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+
 /* --- Footer --- */
 .footer {
     text-align: center;
     padding: 30px 20px;
     background-color: #333;
     color: #fff;
+}
+
+/* --- Responsive adjustments --- */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 3rem;
+    }
+    .header p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .quote {
+        font-size: 1.15rem;
+    }
+}
+
+/* --- Custom Spacing Adjustments --- */
+
+/* Reduces space above the "We're Engaged!" section */
+.section.engagement {
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+
+/* Reduces space above the "Our Moments" gallery */
+.section.gallery-section {
+  padding-top: 15px; 
+  padding-bottom: 20px;
+}
+
+/* This rule applies only to screens 1200px or wider */
+@media (min-width: 1200px) {
+  .header-background-img {
+    /* Re-centers the image vertically on wide screens to keep the ring in view */
+    object-position: 45% 50%;
+  }
 }
