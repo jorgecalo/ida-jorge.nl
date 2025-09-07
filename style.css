@@ -88,15 +88,11 @@ body {
     font-style: italic;
     font-size: 1.3rem;
     margin-top: 25px;
+    margin-bottom: 0; /* ADDED: Removes extra space below the quote */
     padding: 0 20px;
     border: none;
     color: #666;
     line-height: 1.8;
-}
-
-/* --- Custom Spacing Adjustments --- */
-.gallery-section {
-  padding-top: 10px;
 }
 
 /* --- Horizontal Scrolling Gallery --- */
@@ -124,8 +120,8 @@ body {
 }
 
 .gallery img {
-    width: 396px; /* UPDATED: Increased by 20% */
-    height: 286px; /* UPDATED: Increased by 20% */
+    width: 396px;
+    height: 286px;
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -230,7 +226,25 @@ body {
     color: #fff;
 }
 
+/* --- Custom Spacing Adjustments --- */
+.section.engagement {
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+
+.section.gallery-section {
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+
+
 /* --- Responsive adjustments --- */
+@media (min-width: 1200px) {
+  .header-background-img {
+    object-position: 45% 53%;
+  }
+}
+
 @media (max-width: 768px) {
     .header h1 {
         font-size: 3rem;
@@ -244,26 +258,4 @@ body {
     .quote {
         font-size: 1.15rem;
     }
-}
-
-/* --- Custom Spacing Adjustments --- */
-
-/* Reduces space above the "We're Engaged!" section */
-.section.engagement {
-  padding-top: 15px;
-  padding-bottom: 20px;
-}
-
-/* Reduces space above the "Our Moments" gallery */
-.section.gallery-section {
-  padding-top: 15px; 
-  padding-bottom: 20px;
-}
-
-/* This rule applies only to screens 1200px or wider */
-@media (min-width: 1200px) {
-  .header-background-img {
-    /* Re-centers the image vertically on wide screens to keep the ring in view */
-    object-position: 45% 50%;
-  }
 }
