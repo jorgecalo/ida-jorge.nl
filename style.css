@@ -253,48 +253,60 @@ body {
 .wedding-countdown p {
     font-size: 1.2rem;
     color: #666;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .wedding-img {
-    max-width: 100%;
+    max-width: 600px;
+    width: 100%;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
+    margin: 30px auto 0 auto;
+    display: block;
 }
 
 .countdown-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
 .countdown-item {
-    background: #fdfaf6;
-    padding: 15px 20px;
-    border-radius: 8px;
-    min-width: 80px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    background: #fff;
+    padding: 20px 15px;
+    border-radius: 12px;
+    min-width: 85px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eae5df;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.countdown-item:hover {
+    transform: translateY(-5px);
 }
 
 .countdown-number {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bold;
     color: #8B4513;
+    line-height: 1;
+    margin-bottom: 5px;
 }
 
 .countdown-label {
     font-family: 'Lato', sans-serif;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    color: #999;
-    letter-spacing: 1px;
+    color: #8B4513;
+    opacity: 0.7;
+    letter-spacing: 1.5px;
 }
 
 
@@ -317,5 +329,16 @@ body {
 @media (max-width: 480px) {
     .quote {
         font-size: 1.15rem;
+    }
+    .countdown-item {
+        min-width: 65px;
+        padding: 12px 8px;
+    }
+    .countdown-number {
+        font-size: 1.8rem;
+    }
+    .countdown-label {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
     }
 }
